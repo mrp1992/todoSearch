@@ -1,5 +1,5 @@
 {
-  "name": "todo_search_directory",
+  "name": "todo_search",
   "version": "1.0.0",
   "description": "To find all the files with absolute path where TODO is present ",
   "main": "index.js",

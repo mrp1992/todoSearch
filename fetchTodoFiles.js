@@ -1,7 +1,7 @@
 const fs = require("fs");
 const path = require("path");
 
-const filesAndFoldersExclusionList = ["node_modules", ".git", "todo_search"];
+const filesAndFoldersExclusionList = ["node_modules", ".git", "todoSearch"];
 const fileList = [];
 
 exports.fetchAllFilePaths = directory => {
@@ -13,17 +13,17 @@ exports.fetchAllFilePaths = directory => {
   const files = fs.readdirSync(directory);
   files.forEach(file => {
     if (!filesAndFoldersExclusionList.includes(file)) {
-      const currentFileOrFolderPath = path.join(directory, file);
-      if (fs.lstatSync(currentFileOrFolderPath).isDirectory()) {
-        this.fetchAllFilePaths(currentFileOrFolderPath);
+      const fileName = path.join(directory, file);
+      if (fs.lstatSync(fileName).isDirectory()) {
+        this.fetchAllFilePaths(fileName);
       } else {
         if (
           fs
-            .readFileSync(currentFileOrFolderPath)
+            .readFileSync(fileName)
             .toString()
             .includes("TODO")
         ) {
-          fileList.push(currentFileOrFolderPath);
+          fileList.push(fileName);
         }
       }
     }

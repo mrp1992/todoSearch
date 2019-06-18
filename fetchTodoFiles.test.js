@@ -1,10 +1,14 @@
 const fetchTodoFiles = require('./fetchTodoFiles');
+const path = require('path');
 
 describe('fetchTodoFiles', () => {
     it('should return all the files with absolute path which have TODO', () => {
-        expect(fetchTodoFiles.fetchAllFilePaths(__dirname)).toContain('/Users/mohanpadminiramesh/workspace/todo_search/todoFiles/someFileWithTodo.txt');
-        expect(fetchTodoFiles.fetchAllFilePaths(__dirname)).not.toContain('/Users/mohanpadminiramesh/workspace/todo_search/todoFiles/someFileWithoutTodo.txt');
-        expect(fetchTodoFiles.fetchAllFilePaths(__dirname)).not.toContain('/Users/mohanpadminiramesh/workspace/todo_search/todoFiles/someFileWithSmallTodo.txt');
+        const folderPath = path.join(__dirname, '..');
+        const currentDirectory = path.join(folderPath, 'testData');
+        
+        expect(fetchTodoFiles.fetchAllFilePaths(folderPath)).toContain(path.join(currentDirectory, 'TextFileWithTODO.txt'));
+        expect(fetchTodoFiles.fetchAllFilePaths(folderPath)).not.toContain(path.join(currentDirectory, 'TextFileWithoutTODO.txt'));
+        expect(fetchTodoFiles.fetchAllFilePaths(folderPath)).not.toContain(path.join(currentDirectory, 'TextFileWithSmallTODO.txt'));
     });
 
     it('should not return any files when the path is undefined', () => {
