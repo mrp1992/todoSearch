@@ -1,0 +1,23 @@
+{
+  "name": "todo_search_directory",
+  "version": "1.0.0",
+  "description": "To find all the files with absolute path where TODO is present ",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mrp1992/todoSearch.git"
+  },
+  "author": "Mohan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mrp1992/todoSearch/issues"
+  },
+  "homepage": "https://github.com/mrp1992/todoSearch#readme",
+  "devDependencies": {
+    "jest": "^24.8.0"
+  }
+}
