@@ -1,15 +1,15 @@
 
 describe('index.js', () => {
 
+    jest.spyOn(global.console, 'log');
+
 it('should return all the files in the current directory', () => {
-    const filePaths = require('./index').fetchAllFilePaths(__dirname);
+    const filePaths = require('./index');
 
-    expect(filePaths).toContain("/Users/mohanpadminiramesh/workspace/todo_search/index.js");
+    expect(console.log).toHaveBeenCalledWith('/Users/mohanpadminiramesh/workspace/testData/TextFileWithTodo.txt');
+    expect(console.log).not.toHaveBeenCalledWith('/Users/mohanpadminiramesh/workspace/testData/TextFileWithoutTodo.txt');
+    expect(console.log).not.toHaveBeenCalledWith('/Users/mohanpadminiramesh/workspace/testData/TextFileSmallTodo.txt');
+
 });
 
-it('should return undefined when invalid directory is passed', () => {
-    const filePaths = require('./index').fetchAllFilePaths('abc');
-
-    expect(filePaths).toBeUndefined();
-});
 });
