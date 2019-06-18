@@ -3,7 +3,7 @@ describe('index.js', () => {
 
     jest.spyOn(global.console, 'log');
 
-it('should return all the files in the current directory', () => {
+it('should return all the files with TODO in the current directory', () => {
     const filePaths = require('./index');
     const currentDirectory = path.join(__dirname, '/../testData');
 
